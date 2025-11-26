@@ -212,7 +212,12 @@ public class mainForm {
         FoodOrder foodOrder = ordersList.getSelectionModel().getSelectedItem();
         foodOrder.setRestaurant(restaurantList.getSelectionModel().getSelectedItem());
         foodOrder.setTitle(titleField.getText());
-        foodOrder.setPrice(Double.parseDouble(priceField.getText()));
+        if(isNumber(priceField.getText())) {
+            foodOrder.setPrice(Double.parseDouble(priceField.getText()));
+        }
+        else {
+            FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Price field error","Price is wrong", "Price field must be a valid number");
+        }
         foodOrder.setOrderStatus(orderStatusList.getValue());
         foodOrder.setCustomer(clientList.getSelectionModel().getSelectedItem());
         customHibernate.update(foodOrder);
