@@ -211,7 +211,11 @@ public class mainForm {
     public void updateOrder() {
         FoodOrder foodOrder = ordersList.getSelectionModel().getSelectedItem();
         foodOrder.setRestaurant(restaurantList.getSelectionModel().getSelectedItem());
-        foodOrder.setTitle(titleField.getText());
+        if(!isNumber(titleField.getText())){
+            foodOrder.setTitle(titleField.getText());
+        }
+        else  FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Title field error","Title is wrong", "Title cannot be just numbers");
+
         if(isNumber(priceField.getText())) {
             foodOrder.setPrice(Double.parseDouble(priceField.getText()));
         }
