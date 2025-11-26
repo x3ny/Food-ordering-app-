@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="479.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseprifs.fxControllers.UserForm">
+   <children>
+      <Button layoutX="100.0" layoutY="409.0" mnemonicParsing="false" onAction="#createUser" prefHeight="25.0" prefWidth="55.0" text="Save" />
+      <RadioButton fx:id="userRadio" layoutX="33.0" layoutY="43.0" mnemonicParsing="false" onAction="#disableFields" selected="true" text="User">
+         <toggleGroup>
+            <ToggleGroup fx:id="userType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="restaurantRadio" layoutX="251.0" layoutY="43.0" mnemonicParsing="false" onAction="#disableFields" text="Restaurant" toggleGroup="$userType" />
+      <RadioButton fx:id="driverRadio" layoutX="176.0" layoutY="43.0" mnemonicParsing="false" onAction="#disableFields" text="Driver" toggleGroup="$userType" />
+      <RadioButton fx:id="clientRadio" layoutX="101.0" layoutY="43.0" mnemonicParsing="false" onAction="#disableFields" text="Client" toggleGroup="$userType" />
+      <Pane fx:id="userPane" layoutX="-16.0" layoutY="67.0" prefHeight="333.0" prefWidth="239.0">
+         <children>
+            <TextField fx:id="usernameField" layoutX="39.0" layoutY="20.0" prefHeight="34.0" prefWidth="161.0" promptText="username" />
+            <PasswordField fx:id="passwordField" layoutX="39.0" layoutY="69.0" prefHeight="34.0" prefWidth="161.0" promptText="Password" />
+            <TextField fx:id="nameField" layoutX="39.0" layoutY="117.0" prefHeight="34.0" prefWidth="161.0" promptText="Name" />
+            <TextField fx:id="surnameField" layoutX="39.0" layoutY="170.0" prefHeight="34.0" prefWidth="161.0" promptText="Surname" />
+            <TextField fx:id="phoneNumberFieldBasicUser" layoutX="39.0" layoutY="221.0" prefHeight="34.0" prefWidth="161.0" promptText="Phone Number" />
+            <TextField fx:id="addressFieldBasicUser" layoutX="39.0" layoutY="272.0" prefHeight="34.0" prefWidth="161.0" promptText="Address" />
+         </children>
+      </Pane>
+      <Button fx:id="updateButton" layoutX="196.0" layoutY="409.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="25.0" prefWidth="55.0" text="Update" />
+      <Pane fx:id="driverPane" layoutX="201.0" layoutY="82.0" prefHeight="200.0" prefWidth="194.0">
+         <children>
+            <DatePicker fx:id="dateOfBirthField" layoutY="54.0" prefHeight="34.0" prefWidth="174.0" promptText="Birth Date" />
+            <TextField fx:id="licenseNumberField" layoutY="8.0" prefHeight="34.0" prefWidth="174.0" promptText="License number" />
+            <TextField fx:id="vehicleInfoField" layoutY="151.0" prefHeight="34.0" prefWidth="174.0" promptText="Vehicle Info" />
+            <ComboBox fx:id="vehicleTypeBox" layoutY="100.0" prefHeight="34.0" prefWidth="174.0" promptText="Vehicle type" />
+         </children>
+      </Pane>
+      <Pane fx:id="restaurantPane" layoutX="176.0" layoutY="75.0" prefHeight="269.0" prefWidth="262.0">
+         <children>
+            <TextField fx:id="restaurantInfoField" layoutX="22.0" layoutY="21.0" prefHeight="34.0" prefWidth="211.0" promptText="Restaurant Name" />
+            <TextField fx:id="descriptionField" alignment="TOP_LEFT" layoutX="22.0" layoutY="70.0" prefHeight="82.0" prefWidth="211.0" promptText="Description" />
+            <TextField fx:id="emailFieldRestaurant" layoutX="26.0" layoutY="170.0" prefHeight="34.0" prefWidth="211.0" promptText="Email" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="426.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseprifs.fxControllers.mainForm">
+   <children>
+      <TabPane fx:id="tabsPane" layoutX="31.0" layoutY="23.0" prefHeight="354.0" prefWidth="563.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="23.0">
+        <tabs>
+            <Tab fx:id="alterativeTab" onSelectionChanged="#reloadTableData" text="UserManagement">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="userListField" layoutX="14.0" layoutY="14.0" prefHeight="211.0" prefWidth="508.0" />
+                        <Button layoutX="63.0" layoutY="262.0" mnemonicParsing="false" onAction="#addUser" text="Add new user" />
+                        <Button fx:id="UpdateButton" layoutX="189.0" layoutY="262.0" mnemonicParsing="false" onAction="#loadUser" text="Update user" />
+                        <Button layoutX="319.0" layoutY="262.0" mnemonicParsing="false" onAction="#deleteUser" text="Delete user" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="FoodTab" onSelectionChanged="#reloadTableData" text="Food management">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="cuisineList" layoutX="14.0" layoutY="30.0" prefHeight="304.0" prefWidth="200.0" />
+                        <Label layoutX="32.0" layoutY="6.0" text="My menu" />
+                        <Button layoutX="228.0" layoutY="302.0" mnemonicParsing="false" onAction="#createNewMenu" text="New" />
+                        <Button layoutX="307.0" layoutY="302.0" mnemonicParsing="false" onAction="#UpdateNewItem" text="Update" />
+                        <Button layoutX="401.0" layoutY="302.0" mnemonicParsing="false" text="Delete" />
+                        <TextField fx:id="cuisineNameField" layoutX="239.0" layoutY="30.0" promptText="Title" />
+                        <ListView fx:id="restaurantListFood" layoutX="235.0" layoutY="190.0" onMouseClicked="#loadRestaurantMenu" prefHeight="106.0" prefWidth="226.0" />
+                        <TextField fx:id="cuisinePriceField" layoutX="239.0" layoutY="66.0" promptText="Price" />
+                        <CheckBox fx:id="isSpicy" layoutX="403.0" layoutY="34.0" mnemonicParsing="false" text="Spicy" />
+                        <CheckBox fx:id="isVegan" layoutX="403.0" layoutY="61.0" mnemonicParsing="false" text="Vegan" />
+                        <TextArea fx:id="ingredientsCuisineField" layoutX="235.0" layoutY="102.0" prefHeight="78.0" prefWidth="226.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab fx:id="managementTab" onSelectionChanged="#reloadTableData" text="Orders management">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="ordersList" layoutY="56.0" onMouseClicked="#loadOrderInfo" prefHeight="256.0" prefWidth="200.0" />
+                        <ComboBox fx:id="clientList" layoutX="225.0" layoutY="63.0" prefHeight="25.0" prefWidth="172.0" promptText="Clients" />
+                        <TextField fx:id="titleField" layoutX="224.0" layoutY="100.0" prefHeight="25.0" prefWidth="174.0" promptText="Title" />
+                        <Button layoutX="225.0" layoutY="277.0" mnemonicParsing="false" onAction="#createOrder" text="New" />
+                        <Button layoutX="286.0" layoutY="277.0" mnemonicParsing="false" onAction="#updateOrder" text="Update" />
+                        <Button layoutX="356.0" layoutY="277.0" mnemonicParsing="false" onAction="#DeleteOrder" text="Delete" />
+                        <TextField fx:id="priceField" layoutX="225.0" layoutY="138.0" prefHeight="25.0" prefWidth="173.0" promptText="Price" />
+                        <ComboBox fx:id="restaurantList" layoutX="225.0" layoutY="184.0" prefHeight="25.0" prefWidth="171.0" promptText="Restaurants" />
+                        <ComboBox fx:id="orderStatusList" layoutX="225.0" layoutY="227.0" prefHeight="25.0" prefWidth="171.0" promptText="Order status" />
+                        <ComboBox fx:id="filterStatus" layoutY="14.0" onAction="#filterOrders" prefWidth="150.0" />
+                        <ComboBox fx:id="filterClients" layoutX="164.0" layoutY="14.0" onAction="#filterOrders" prefWidth="150.0" />
+                        <DatePicker fx:id="filterFrom" layoutX="323.0" layoutY="14.0" onAction="#filterOrders" prefHeight="25.0" prefWidth="117.0" />
+                        <DatePicker fx:id="FilterTo" layoutX="446.0" layoutY="14.0" onAction="#filterOrders" prefHeight="25.0" prefWidth="108.0" />
+                        <ListView fx:id="foodList" layoutX="413.0" layoutY="63.0" prefHeight="200.0" prefWidth="141.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
