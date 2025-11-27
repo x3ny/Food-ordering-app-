@@ -2,6 +2,7 @@ package com.example.courseprifs.fxControllers;
 
 import com.example.courseprifs.hibernateControl.GenericHibernate;
 import com.example.courseprifs.model.*;
+import com.example.courseprifs.utils.FxUtils;
 import jakarta.persistence.EntityManagerFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -125,9 +126,28 @@ public class UserForm {
 
     public void createUser(ActionEvent actionEvent) {
         if(userRadio.isSelected()) {
-            User user = new User(usernameField.getText(), passwordField.getText(), nameField.getText(),
-                    surnameField.getText(), phoneNumberFieldBasicUser.getText(), true);
-            genericHibernate.create(user);
+            if(usernameField.getText().isEmpty()) {
+                FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Username field is empty","username cannot be empty", "username field cannot be empty");
+            }
+            else if(passwordField.getText().isEmpty()) {
+                FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Password field error","Password cannot be empty", "Password field cannot be empty");
+            }
+            else if(nameField.getText().isEmpty()) {
+                FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Name field error","Name cannot be empty", "Name field cannot be empty");
+            }
+            else if(surnameField.getText().isEmpty()) {
+                FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Surname field error","Surname cannot be empty", "Surname field cannot be empty");
+            }
+            else if(phoneNumberFieldBasicUser.getText().isEmpty()) {
+                FxUtils.generateAlert(Alert.AlertType.INFORMATION, "Phone number field error","Phone number cannot be empty", "Phone number field cannot be empty");
+            }
+            else {
+                User user = new User(usernameField.getText(), passwordField.getText(), nameField.getText(),
+                        surnameField.getText(), phoneNumberFieldBasicUser.getText(), true);
+                genericHibernate.create(user);
+            }
+
+
         }
         else if(clientRadio.isSelected()) {
             BasicUser basicUser = new BasicUser(usernameField.getText(), passwordField.getText(),
