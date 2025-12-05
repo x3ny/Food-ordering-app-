@@ -58,17 +58,30 @@
                         <Button layoutX="286.0" layoutY="277.0" mnemonicParsing="false" onAction="#updateOrder" text="Update" />
                         <Button layoutX="356.0" layoutY="277.0" mnemonicParsing="false" onAction="#DeleteOrder" text="Delete" />
                         <TextField fx:id="priceField" layoutX="225.0" layoutY="138.0" prefHeight="25.0" prefWidth="173.0" promptText="Price" />
-                        <ComboBox fx:id="restaurantList" layoutX="225.0" layoutY="184.0" prefHeight="25.0" prefWidth="171.0" promptText="Restaurants" />
+                        <ComboBox fx:id="restaurantList" layoutX="225.0" layoutY="184.0" onAction="#loadRestaurantMenuForOrder" prefHeight="25.0" prefWidth="171.0" promptText="Restaurants" />
                         <ComboBox fx:id="orderStatusList" layoutX="225.0" layoutY="227.0" prefHeight="25.0" prefWidth="171.0" promptText="Order status" />
                         <ComboBox fx:id="filterStatus" layoutY="14.0" onAction="#filterOrders" prefWidth="150.0" />
                         <ComboBox fx:id="filterClients" layoutX="164.0" layoutY="14.0" onAction="#filterOrders" prefWidth="150.0" />
                         <DatePicker fx:id="filterFrom" layoutX="323.0" layoutY="14.0" onAction="#filterOrders" prefHeight="25.0" prefWidth="117.0" />
                         <DatePicker fx:id="FilterTo" layoutX="446.0" layoutY="14.0" onAction="#filterOrders" prefHeight="25.0" prefWidth="108.0" />
-                        <ListView fx:id="foodList" layoutX="413.0" layoutY="63.0" prefHeight="200.0" prefWidth="141.0" />
+                        <ListView fx:id="foodList" layoutX="413.0" layoutY="63.0" prefHeight="200.0" prefWidth="141.0" AnchorPane.leftAnchor="413.0" AnchorPane.rightAnchor="9.0" />
+                        <Button layoutX="440.0" layoutY="277.0" mnemonicParsing="false" onAction="#loadChatForm" text="View chat" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab fx:id="chatTab" onSelectionChanged="#reloadTableData" text="Chat management">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="allChats" layoutX="14.0" layoutY="7.0" onMouseClicked="#loadChatMessages" prefHeight="319.0" prefWidth="183.0" />
+                        <ListView fx:id="chatMessages" layoutX="216.0" layoutY="8.0" prefHeight="318.0" prefWidth="182.0" />
+                        <Button layoutX="426.0" layoutY="30.0" mnemonicParsing="false" onAction="#updateChat" text="Update chat" />
+                        <Button layoutX="426.0" layoutY="74.0" mnemonicParsing="false" onAction="#deleteChat" text="Delete chat" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

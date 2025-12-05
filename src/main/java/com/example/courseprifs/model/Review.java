@@ -24,4 +24,12 @@ public class Review {
     private BasicUser commentOwner;
     @ManyToOne
     private BasicUser feedbackOwner;
+    @ManyToOne
+    private Chat chat;
+
+    public Review(String reviewText, BasicUser commentOwner, Chat chat) {
+        this.reviewText = reviewText;
+        this.commentOwner = commentOwner;
+        this.chat = chat;
+    }
 }

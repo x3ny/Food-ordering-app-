@@ -31,6 +31,13 @@ public class Chat {
     private FoodOrder FoodOrder;
     private LocalDateTime createdAt;
     private LocalDateTime lastMessageAt;
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Review> messages;
 
-
+    public Chat(String name, FoodOrder foodOrder) {
+        this.name = name;
+        FoodOrder = foodOrder;
+        this.createdAt = LocalDate.now().atStartOfDay();
+        this.messages = new ArrayList<>();
+    }
 }

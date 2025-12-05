@@ -54,6 +54,24 @@ public class CustomHibernate extends GenericHibernate{
         return foodOrders;
     }
 
+    public List<Chat> getChatMessages(Chat chat){
+        List<Chat> chats = new ArrayList<>();
+        try{
+            entityManager = entityManagerFactory.createEntityManager();
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<Chat> query = cb.createQuery(Chat.class);
+            Root<Chat> root = query.from(Chat.class);
+
+            query.select(root).where(cb.equal(root.get("chat"),chat));
+
+            Query q = entityManager.createQuery(query);
+            chats = q.getResultList();
+        }catch(Exception e){
+            //Veliau cia dar
+        }
+        return chats;
+    }
+
     public List<FoodOrder> getFilteredOrders(OrderStatus orderStatus, BasicUser client, LocalDate start, LocalDate end, Restaurant restaurant){
         List<FoodOrder> foodOrders = new ArrayList<>();
         try{

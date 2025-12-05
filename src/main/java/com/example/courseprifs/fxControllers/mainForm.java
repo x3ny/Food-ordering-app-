@@ -70,6 +70,9 @@ public class mainForm {
     public CheckBox isVegan;
     @FXML
     public TextArea ingredientsCuisineField;
+    public ListView<Chat> allChats;
+    public ListView<Review> chatMessages;
+    public Tab chatTab;
 
     private EntityManagerFactory entityManagerFactory;
     private CustomHibernate customHibernate;
@@ -113,6 +116,11 @@ public class mainForm {
             clearAllCuisineFields();
             restaurantListFood.getItems().addAll(customHibernate.getAllRecords(Restaurant.class));
         }
+        else if(chatTab.isSelected()){
+            clearAllMessageFields();
+            allChats.getItems().addAll(customHibernate.getAllRecords(Chat.class));
+
+        }
     }
 
     private void clearAllOrderFields(){
@@ -131,6 +139,11 @@ public class mainForm {
         ingredientsCuisineField.clear();
         isSpicy.setSelected(false);
         isVegan.setSelected(false);
+    }
+
+    private void clearAllMessageFields(){
+        allChats.getItems().clear();
+        chatMessages.getItems().clear();
     }
 
 
@@ -181,12 +194,8 @@ public class mainForm {
 
     //<editor-fold desc="Orders management functions">
 
-    private List<FoodOrder> getFoodOrders(){
-        if(currentUser instanceof Restaurant){
-            return customHibernate.getRestaurantOrders((Restaurant)currentUser);
-        }else{
-            return customHibernate.getAllRecords(FoodOrder.class);
-        }
+    private List<FoodOrder> getFoodOrders() {
+        return null;
     }
 
     public static boolean isNumber(String str) {
@@ -270,6 +279,11 @@ public class mainForm {
 
     }
 
+    public void loadRestaurantMenuForOrder() {
+        foodList.getItems().clear();
+        foodList.getItems().addAll(customHibernate.getRestaurantCuisine(restaurantList.getSelectionModel().getSelectedItem()));
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Cuisine management tab functions">
@@ -285,6 +299,22 @@ public class mainForm {
 
     public void loadRestaurantMenu() {
         cuisineList.getItems().addAll(customHibernate.getRestaurantCuisine(restaurantList.getSelectionModel().getSelectedItem()));
+    }
+
+    //</editor-fold>
+
+    //<editor-fold desc="Admin chat functions">
+    public void loadChatMessages() {
+        chatMessages.getItems().addAll(customHibernate.getChatMessages(allChats.getSelectionModel().getSelectedItem()));
+    }
+
+    public void updateChat(ActionEvent actionEvent) {
+    }
+
+    public void deleteChat(ActionEvent actionEvent) {
+    }
+
+    public void loadChatForm(ActionEvent actionEvent) {
     }
     //</editor-fold>
 }
